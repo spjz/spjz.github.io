@@ -10,10 +10,11 @@ const DEG = Math.PI / 180;
  * @property {number} [smoothTime]  seconds to catch up (default 0.25)
  * @property {number} [eyeHeight]   0–1 of the subject's height that "looks" (default 0.65)
  * @property {number} [depth]       0–1: where the cursor ray is cut, from the eyes (0) to the camera (1) (default 0.5)
+ * @property {{ x: number, y: number } | null} [target]  viewport point (CSS px) to look at instead of the cursor
  */
 
 /** @type {Required<LookOptions>} */
-export const LOOK_DEFAULTS = { maxYaw: 60, maxPitch: 20, smoothTime: 0.25, eyeHeight: 0.65, depth: 0.5 };
+export const LOOK_DEFAULTS = { maxYaw: 60, maxPitch: 20, smoothTime: 0.25, eyeHeight: 0.65, depth: 0.5, target: null };
 
 const clamp = (v, lim) => Math.max(-lim, Math.min(lim, v));
 

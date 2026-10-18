@@ -149,9 +149,11 @@ export function VoxelSubject({
       g.parent.localToWorld(_eye.set(0, b.min[1] + (b.max[1] - b.min[1]) * opts.eyeHeight, 0));
       const raw = drivers.current.raw;
       _target.copy(camera.position); // face the viewer until the pointer moves
-      if (raw.moved) {
+      // A fixed viewport target (e.g. a panel to "read") wins over the cursor.
+      const pt = opts.target ?? (raw.moved ? { x: raw.clientX, y: raw.clientY } : null);
+      if (pt) {
         const rect = gl.domElement.getBoundingClientRect();
-        _ndc.set(((raw.clientX - rect.left) / rect.width) * 2 - 1, -((raw.clientY - rect.top) / rect.height) * 2 + 1);
+        _ndc.set(((pt.x - rect.left) / rect.width) * 2 - 1, -((pt.y - rect.top) / rect.height) * 2 + 1);
         _ray.setFromCamera(_ndc, camera);
         // Cut the cursor ray with a camera-facing plane between the eyes and the camera.
         camera.getWorldDirection(_normal).negate();

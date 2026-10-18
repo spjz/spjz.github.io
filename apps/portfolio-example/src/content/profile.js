@@ -3,7 +3,8 @@
 
 /**
  * @typedef {{ label: string, href: string }} Link
- * @typedef {{ id: string, title: string, org?: string, body: string, tags: string[], links: Link[], note?: string }} Project
+ * @typedef {{ id: string, title: string, org?: string, body: string, tags: string[], links: Link[], note?: string, embed?: string, playHere?: boolean }} Project
+ * @typedef {{ id: string, label: string, description: string }} Item
  * @typedef {{ company: string, location: string, start: string, end: string | null, role: string, bullets: string[], tags: string[], href?: string }} Role
  */
 
@@ -21,11 +22,39 @@ export const profile = {
     intro:
       'I’ve spent over a decade designing, building and running software, from simple product sites to distributed network systems. I like hard problems, good tools and working with people who’ll teach me something.',
     hint: 'Psst, click the dragon. (It’s me.)',
+    // The hint as a game prompt, by explosion count (see hintFor).
+    prompts: { start: '▶ PRESS DRAGON', again: 'Again?', many: (n) => `Exploded ${n} times. It’s fine. It’s fine.` },
   },
+
+  // Section labels: the site is a game, each section a level (SECTION_EXPERIENCE_DESIGN.md §1).
+  levels: [
+    { id: 'hero', label: 'Introduction', level: 'Spawn' },
+    { id: 'about', label: 'About', level: 'Character sheet' },
+    { id: 'work', label: 'Selected work', level: 'Level select' },
+    { id: 'experience', label: 'Experience', level: 'The road so far' },
+    { id: 'skills', label: 'Skills', level: 'Crafting table' },
+    { id: 'contact', label: 'Contact', level: 'Save point' },
+  ],
 
   about: {
     // null renders a placeholder. Drop a photo at public/profile.jpg and set '/profile.jpg'.
     photo: null,
+    // Character sheet: qualitative only, no invented numbers.
+    stats: [
+      { label: 'Class', value: 'Full-stack engineer' },
+      { label: 'Origin', value: 'Self-taught' },
+      { label: 'Experience', value: '10+ years' },
+      { label: 'Alignment', value: 'Curious' },
+    ],
+    /** @type {Item[]} */
+    inventory: [
+      { id: 'science', label: 'Science', description: 'How things work, all the way down.' },
+      { id: 'philosophy', label: 'Philosophy', description: 'Why things are, and whether they should be.' },
+      { id: 'linguistics', label: 'Linguistics', description: 'How we say things, and what we mean by them.' },
+      { id: 'foss', label: 'Free & open source', description: 'Software that belongs to everyone.' },
+      { id: 'music', label: 'Music', description: 'Making it, not only listening to it.' },
+      { id: 'vfx', label: 'Visual effects', description: 'Making pixels do things they shouldn’t.' },
+    ],
     paragraphs: [
       'I’m a self-taught engineer who works across the stack: interface design, APIs, databases, infrastructure and the automation that holds it together. I care about clear documentation, sensible standards and systems that are easy for the next person to pick up.',
       'I’m currently at Tapp, building Tapp Cloud, the web platform behind its payments services, from React front ends to serverless APIs and the telemetry that shows whether they’re healthy.',
@@ -34,6 +63,7 @@ export const profile = {
   },
 
   work: {
+    worlds: { professional: 'World 1 · Professional', personal: 'World 2 · Personal', elsewhere: 'Side quests' },
     /** @type {Project[]} */
     professional: [
       {
@@ -70,6 +100,7 @@ export const profile = {
         tags: ['React', 'Three.js', 'React Three Fiber', 'Vite', 'Playwright'],
         links: [],
         note: 'You’re looking at it.',
+        playHere: true,
       },
       {
         id: 'henhouse-panic',
@@ -80,6 +111,7 @@ export const profile = {
           { label: 'Play', href: 'https://spjz.github.io/henhouse-panic/' },
           { label: 'Source', href: 'https://github.com/spjz/henhouse-panic' },
         ],
+        embed: 'https://spjz.github.io/henhouse-panic/',
       },
       {
         id: 'splitter-cell',
@@ -90,6 +122,7 @@ export const profile = {
           { label: 'Play', href: 'https://spjz.github.io/splitter-cell/' },
           { label: 'Source', href: 'https://github.com/spjz/splitter-cell' },
         ],
+        embed: 'https://spjz.github.io/splitter-cell/',
       },
     ],
     /** Off-the-clock profiles, shown under the personal projects. @type {Link[]} */
@@ -185,11 +218,12 @@ export const profile = {
   earlier:
     'Laboratory assistant at Wickham Laboratories (2015–16) and customer service advisor at Innovation Group (2015). Earlier experience on request.',
 
+  // Each group is a material stack; `colour` tints the dragon on hover (sprite palette).
   skills: [
-    { name: 'Front end', items: ['React', 'Vue', 'Svelte', 'Lit', 'Redux', 'Nuxt', 'Tailwind CSS', 'TypeScript', 'JavaScript', 'HTML', 'CSS/SCSS', 'Three.js'] },
-    { name: 'Back end & data', items: ['Node.js', 'Express', 'GraphQL', 'PHP (Laravel, Symfony, CodeIgniter, Phalcon)', 'MySQL', 'Elasticsearch', 'RabbitMQ'] },
-    { name: 'Infrastructure', items: ['AWS', 'Docker', 'Kubernetes', 'Google Compute Engine', 'DigitalOcean', 'OVH', 'Nginx', 'Apache', 'Linux', 'macOS'] },
-    { name: 'Ways of working', items: ['Architecture & design', 'Documentation', 'CI/CD', 'Observability (Grafana, Sentry)', 'Technical writing', 'Working with LLM agents'] },
+    { name: 'Front end', colour: '#b6e000', items: ['React', 'Vue', 'Svelte', 'Lit', 'Redux', 'Nuxt', 'Tailwind CSS', 'TypeScript', 'JavaScript', 'HTML', 'CSS/SCSS', 'Three.js'] },
+    { name: 'Back end & data', colour: '#e8c25a', items: ['Node.js', 'Express', 'GraphQL', 'PHP (Laravel, Symfony, CodeIgniter, Phalcon)', 'MySQL', 'Elasticsearch', 'RabbitMQ'] },
+    { name: 'Infrastructure', colour: '#3fae3f', items: ['AWS', 'Docker', 'Kubernetes', 'Google Compute Engine', 'DigitalOcean', 'OVH', 'Nginx', 'Apache', 'Linux', 'macOS'] },
+    { name: 'Ways of working', colour: '#ff5a5a', process: true, items: ['Architecture & design', 'Documentation', 'CI/CD', 'Observability (Grafana, Sentry)', 'Technical writing', 'Working with LLM agents'] },
   ],
 
   contact: {
@@ -199,9 +233,10 @@ export const profile = {
     // reversed. assembleEmail() joins it in the browser after mount (§4).
     email: { user: ['murehp', 'esojrevapap'], domain: ['liamg', 'moc'] },
     links: [{ label: 'GitHub', href: 'https://github.com/spjz' }],
+    copied: '✓ Saved: address copied',
   },
 
-  footer: { note: 'I am a dragon.' },
+  footer: { note: 'I am a dragon.', back: '▲ Back to Level 1' },
 };
 
 const reverse = (s) => [...s].reverse().join('');
@@ -209,4 +244,11 @@ const reverse = (s) => [...s].reverse().join('');
 /** @param {{ user: string[], domain: string[] }} parts */
 export function assembleEmail(parts) {
   return `${reverse(parts.user.join(''))}@${parts.domain.map(reverse).join('.')}`;
+}
+
+/** The hero prompt for a given number of explosions this session. */
+export function hintFor(prompts, count) {
+  if (count <= 0) return prompts.start;
+  if (count < 3) return prompts.again;
+  return prompts.many(count);
 }

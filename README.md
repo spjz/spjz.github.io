@@ -63,7 +63,7 @@ const VoxelBackground = lazy(() => import('@dragon/voxel-scene').then((m) => ({ 
 
 | Group | Props |
 |---|---|
-| Subject | `subject` (`'dragon'`, a sprite/voxels/image/vox definition, or a `VoxelModel`), `scale`, `position`, `rotation`, `lookAtPointer` (`true` or { maxYaw, maxPitch, smoothTime, eyeHeight, depth }: faces the viewer, then turns towards the cursor), `voxelSize`, `showInterior` |
+| Subject | `subject` (`'dragon'`, a sprite/voxels/image/vox definition, or a `VoxelModel`), `scale`, `position`, `rotation`, `lookAtPointer` (`true` or { maxYaw, maxPitch, smoothTime, eyeHeight, depth, target }: faces the viewer, then turns towards the cursor, or towards `target`, a fixed viewport point, when set), `voxelSize`, `showInterior` |
 | Effects | `preset` (`Idle`, `Party`, `Explode loop`, `Wave`) or `effects` (array, diffed by `id`), `offsetStrength` |
 | Animation cycle | `envelope` (defaults for every effect), `period`, `timeScale`, `paused`, `driver` (`'time'`, `'scroll'`, `'pointer'` or a function), `scrollTarget` |
 | Camera | `camera` ({ azimuth, elevation, distance, target, fov }; changes animate), `cameraPreset`, `transition`, `autoOrbit`, `drift`, `parallax`, `onCameraChange` |
@@ -122,8 +122,8 @@ const Sink = defineEffect({
 ## Checks
 
 ```sh
-npm test               # Vitest: engine, PoC parity, diffing, envelopes, look angles, portfolio content (59 tests)
-npm run test:visual    # Playwright (one worker; WebGL): presets, palette, cursor tracking, click-to-explode, portfolio page, section snap scrolling (record with -- --update-snapshots)
+npm test               # Vitest: engine, PoC parity, diffing, envelopes, look angles, portfolio content, section helpers (67 tests)
+npm run test:visual    # Playwright (one worker; WebGL): presets, palette, cursor tracking, click-to-explode, portfolio page, section snap scrolling, level experiences (record with -- --update-snapshots)
 npm run typecheck      # tsc --checkJs over the package
 npm run lint           # Biome
 npm run build          # production builds of both apps
