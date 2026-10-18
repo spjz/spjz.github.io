@@ -36,7 +36,13 @@ function explodeOnce(handle, setEffects) {
   if (handle.trigger('boom', { restart: false })) return;
   if (handle.bus.engine?.stack.get('boom')) return; // present and still playing
   setEffects([...handle.getState().effects, BOOM]);
-  setTimeout(() => handle.trigger('boom'), 50);
+  // The new effect only exists once React has committed it; retry each frame
+  // (up to ~2 s) instead of guessing a delay, which loses the click under load.
+  let tries = 120;
+  const fire = () => {
+    if (!handle.trigger('boom') && --tries > 0) requestAnimationFrame(fire);
+  };
+  requestAnimationFrame(fire);
 }
 // ?visual: no panels or stats, for Playwright screenshot tests.
 const VISUAL = new URLSearchParams(location.search).has('visual');

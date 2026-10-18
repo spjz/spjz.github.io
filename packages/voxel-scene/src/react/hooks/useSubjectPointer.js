@@ -85,7 +85,7 @@ export function useSubjectPointer(meshRef, onClick, { cursor = 'pointer' } = {})
     const h = hover.current;
     if (!enabled || !cursor || !h.dirty) return;
     h.dirty = false;
-    const over = !(h.target && h.target.closest(INTERACTIVE)) && !!hitTest(h.x, h.y);
+    const over = !h.target?.closest(INTERACTIVE) && !!hitTest(h.x, h.y);
     if (over !== h.over) {
       h.over = over;
       document.body.style.cursor = over ? cursor : '';

@@ -16,7 +16,8 @@
     "typecheck": "tsc -p tsconfig.json",
     "types": "tsc -p packages/voxel-scene/tsconfig.types.json",
     "lint": "biome lint .",
-    "format": "biome format --write ."
+    "format": "biome format --write .",
+    "og": "node tools/og-image.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.15",

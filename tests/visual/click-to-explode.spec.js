@@ -47,10 +47,11 @@ test('click on the dragon explodes once, then it reassembles', async ({ page }) 
   await page.waitForTimeout(100);
   expect((await probe(page)).t0).toBe(mid.t0);
 
-  // After the 2.5 s cycle (plus margin) the explode contributes nothing: prior state.
-  await page.waitForTimeout(2600);
+  // After the 2.5 s cycle the explode contributes nothing: prior state. Polled,
+  // because the engine clock caps each frame at 0.1 s, so on a slow renderer
+  // scene time runs behind wall-clock time.
+  await expect.poll(async () => (await probe(page)).playing, { timeout: 15000 }).toBe(false);
   const after = await probe(page);
-  expect(after.playing).toBe(false);
   expect(after.boomEnv).toBe(0);
 
   // And it can be triggered again once finished.
