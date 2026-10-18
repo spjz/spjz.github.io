@@ -97,7 +97,7 @@ function ProjectCard({ project }) {
 
 export function Work({ work, githubHref }) {
   return (
-    <section id="work" aria-labelledby="work-title">
+    <section id="work" className="tall" aria-labelledby="work-title">
       <h2 id="work-title">Selected work</h2>
       <h3>Professional</h3>
       <div className="cards">
@@ -126,7 +126,7 @@ export function Work({ work, githubHref }) {
 
 export function Experience({ experience, earlier }) {
   return (
-    <section id="experience" aria-labelledby="experience-title">
+    <section id="experience" className="tall" aria-labelledby="experience-title">
       <h2 id="experience-title">Experience</h2>
       <ol className="timeline">
         {experience.map((r) => (
@@ -191,6 +191,23 @@ export function Contact({ contact }) {
         <p className="muted">My email address needs JavaScript to appear. You can also reach me via GitHub.</p>
       </noscript>
     </section>
+  );
+}
+
+/** Dot per section; the active one is marked for screen readers too. Plain anchors: the snap does the rest. */
+export function SectionNav({ sections, active }) {
+  return (
+    <nav className="section-nav" aria-label="Sections">
+      <ul>
+        {sections.map((s) => (
+          <li key={s.id}>
+            <a href={`#${s.id}`} title={s.label} aria-current={s.id === active ? 'true' : undefined}>
+              <span className="sr-only">{s.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
 

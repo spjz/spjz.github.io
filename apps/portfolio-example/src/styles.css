@@ -13,8 +13,10 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* Section snap scrolling (docs/SCROLL_DESIGN.md). Stays on the root scroller:
+   the dragon's scroll driver listens on window. */
+html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; scroll-snap-type: y proximity; } }
 
 body {
   margin: 0;
@@ -35,8 +37,27 @@ a:focus-visible, .button:focus-visible { outline: 2px solid var(--accent); outli
 /* Content column on the left; the dragon lives on the right on wide screens. */
 main, footer { position: relative; max-width: 780px; margin-left: max(16px, 7vw); margin-right: 16px; }
 
-section { padding: 12vh 0 4vh; }
-#hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 8vh; }
+/* One screen per section, content centred. Tall sections (work, experience)
+   start at the top and scroll freely inside; a fling can't skip a short one. */
+section {
+  min-height: 100svh; padding: 8vh 0;
+  display: flex; flex-direction: column; justify-content: center;
+  scroll-snap-align: start; scroll-snap-stop: always;
+}
+section.tall { justify-content: flex-start; scroll-snap-stop: normal; }
+footer { scroll-snap-align: end; }
+
+/* Section dots, right edge; hidden on narrow screens. */
+.section-nav { position: fixed; right: 18px; top: 50%; transform: translateY(-50%); z-index: 2; }
+.section-nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.section-nav a { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; }
+.section-nav a::before {
+  content: ''; width: 9px; height: 9px; border-radius: 50%;
+  border: 1.5px solid var(--muted); transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.section-nav a:hover::before { border-color: var(--accent); }
+.section-nav a[aria-current]::before { background: var(--accent); border-color: var(--accent); transform: scale(1.25); }
+.section-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
 h1 { font-size: clamp(2.6rem, 6.5vw, 4.6rem); line-height: 1.02; margin: 0; letter-spacing: -0.025em; }
 h1 .role { display: block; font-size: 0.42em; font-weight: 600; letter-spacing: -0.01em; color: var(--muted); margin-top: 0.45em; }
@@ -113,7 +134,8 @@ footer { font-size: 0.85rem; }
 
 @media (max-width: 760px) {
   main, footer { margin-left: 16px; }
-  section { padding: 9vh 0 3vh; }
+  section { padding: 6vh 0; }
+  .section-nav { display: none; }
   .about { grid-template-columns: 1fr; justify-items: start; }
   .photo { width: 120px; height: 120px; }
   .photo.placeholder { font-size: 2rem; }

@@ -123,7 +123,7 @@ const Sink = defineEffect({
 
 ```sh
 npm test               # Vitest: engine, PoC parity, diffing, envelopes, look angles, portfolio content (59 tests)
-npm run test:visual    # Playwright (one worker; WebGL): presets, palette, cursor tracking, click-to-explode, portfolio page (record with -- --update-snapshots)
+npm run test:visual    # Playwright (one worker; WebGL): presets, palette, cursor tracking, click-to-explode, portfolio page, section snap scrolling (record with -- --update-snapshots)
 npm run typecheck      # tsc --checkJs over the package
 npm run lint           # Biome
 npm run build          # production builds of both apps
