@@ -98,7 +98,10 @@ export const profile = {
         title: 'Voxel dragon',
         body: 'The scene behind this page: a pixel-art sprite turned into thousands of animated voxels that react to your cursor, scrolling and clicks, driven by a composable effects engine.',
         tags: ['React', 'Three.js', 'React Three Fiber', 'Vite', 'Playwright'],
-        links: [],
+        links: [
+          { label: 'Play', href: 'https://spjz.github.io/resume/' },
+          { label: 'Source', href: 'https://github.com/spjz/resume' },
+        ],
         note: 'You’re looking at it.',
         playHere: true,
       },

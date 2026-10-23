@@ -68,7 +68,7 @@ export function Experience({ experience, earlier, level, seen, onCheckpoint }) {
         </ul>
       </div>
       <div className="road-wrap">
-      <img ref={walker} className="walker" src="/dragon-sprite.png" alt="" width="40" height="40" aria-hidden="true" />
+      <img ref={walker} className="walker" src={`${import.meta.env.BASE_URL}dragon-sprite.png`} alt="" width="40" height="40" aria-hidden="true" />
       <ol className="timeline road" ref={road}>
         {experience.map((r, i) => (
           <li className={`panel build${i <= checkpoint ? ' reached' : ''}`} key={`${r.company}-${r.start}`} style={{ '--i': i }}>

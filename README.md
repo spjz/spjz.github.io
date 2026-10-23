@@ -123,11 +123,24 @@ const Sink = defineEffect({
 
 ```sh
 npm test               # Vitest: engine, PoC parity, diffing, envelopes, look angles, portfolio content, section helpers (67 tests)
-npm run test:visual    # Playwright (one worker; WebGL): presets, palette, cursor tracking, click-to-explode, portfolio page, section snap scrolling, level experiences (record with -- --update-snapshots)
+npm run test:visual    # Playwright (one worker; WebGL): presets, palette, cursor tracking, click-to-explode, portfolio page, section snap scrolling, level experiences, the production build under /resume/ (record with -- --update-snapshots)
 npm run typecheck      # tsc --checkJs over the package
 npm run lint           # Biome
 npm run build          # production builds of both apps
 npm run og             # re-render the portfolio share image (apps/portfolio-example/public/og.png)
+```
+
+## Deploy
+
+The portfolio (`apps/portfolio-example`) is published to GitHub Pages at <https://spjz.github.io/resume/> by `.github/workflows/pages.yml` on every push to `master`. The workflow runs the unit tests, builds the portfolio, checks the email address isn't in the build, and deploys `apps/portfolio-example/dist`.
+
+- One-off repo setting: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+- Builds use the `/resume/` base path. Set `BASE_PATH=/` when building for a custom domain at the root.
+- To try the production build locally, exactly as Pages serves it:
+
+```sh
+npm run build -w @dragon/portfolio-example
+npx vite preview apps/portfolio-example   # → http://localhost:4173/resume/
 ```
 
 ## Notes

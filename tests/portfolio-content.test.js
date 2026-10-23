@@ -16,7 +16,7 @@ describe('email', () => {
   it('never appears whole in the source or the HTML (incl. JSON-LD)', () => {
     for (const text of [source, html]) {
       expect(text).not.toContain(EMAIL);
-      expect(text).not.toContain('papaverjosepherum');
+      expect(text).not.toContain(EMAIL.split('@')[0]);
     }
   });
 
@@ -56,7 +56,7 @@ describe('decisions', () => {
   });
 
   it('showcases recent public GitHub projects with live and source links', () => {
-    for (const id of ['henhouse-panic', 'splitter-cell']) {
+    for (const id of ['voxel-dragon', 'henhouse-panic', 'splitter-cell']) {
       const p = profile.work.personal.find((x) => x.id === id);
       expect(p, id).toBeTruthy();
       expect(p.links.map((l) => l.label)).toEqual(['Play', 'Source']);

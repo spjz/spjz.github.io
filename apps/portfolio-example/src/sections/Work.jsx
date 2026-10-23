@@ -43,7 +43,8 @@ function Cartridge({ project, index, onPlayHere }) {
           </a>
         )}
         {project.links
-          .filter((l) => !(project.embed && l.label === 'Play'))
+          // The in-page buttons above stand in for an external "Play".
+          .filter((l) => !((project.embed || project.playHere) && l.label === 'Play'))
           .map((l) => (
             <ExternalLink key={l.href} href={l.href}>
               {l.label}

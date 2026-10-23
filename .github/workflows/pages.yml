@@ -1,0 +1,55 @@
+# Builds the portfolio (apps/portfolio-example) and publishes it to GitHub Pages
+# at https://spjz.github.io/resume/. Repo setting: Pages → Source → GitHub Actions.
+name: Deploy portfolio to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; a newer push supersedes a queued one, never a running one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Unit tests only: the Playwright specs need a GPU for WebGL.
+      - run: npm test
+      - run: npm run build -w @dragon/portfolio-example
+      # The address is assembled in the browser; it must never ship whole. The
+      # needle is reversed here so the address isn't written out in this file either.
+      - name: Check the email address is not in the build
+        run: |
+          needle=$(echo murehpesojrevapap | rev)
+          if grep -rq "$needle" apps/portfolio-example/dist; then
+            echo "Email address found in the build" >&2
+            exit 1
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/portfolio-example/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
