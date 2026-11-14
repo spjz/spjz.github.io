@@ -1,5 +1,5 @@
 # Builds the portfolio (apps/portfolio-example) and publishes it to GitHub Pages
-# at https://spjz.github.io/resume/. Repo setting: Pages → Source → GitHub Actions.
+# at https://spjz.uk/ (the spjz.github.io user site). Repo setting: Pages → Source → GitHub Actions.
 name: Deploy portfolio to GitHub Pages
 
 on:

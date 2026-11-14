@@ -49,8 +49,8 @@ test('external links are announced and point at the agreed sites', async ({ page
 test('share meta and structured data are present and private', async ({ page }) => {
   await page.goto(URL);
   await expect(page).toHaveTitle('Joe Doherty · Full-stack software engineer');
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://spjz.github.io/resume/og.png');
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://spjz.github.io/resume/');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://spjz.uk/og.png');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://spjz.uk/');
   expect((await page.request.get(`${URL}og.png`)).status()).toBe(200);
   const ld = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
   expect(ld).toMatchObject({ '@type': 'Person', name: 'Joe Doherty', worksFor: { name: 'Tapp' } });

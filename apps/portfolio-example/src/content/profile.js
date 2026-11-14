@@ -99,8 +99,8 @@ export const profile = {
         body: 'The scene behind this page: a pixel-art sprite turned into thousands of animated voxels that react to your cursor, scrolling and clicks, driven by a composable effects engine.',
         tags: ['React', 'Three.js', 'React Three Fiber', 'Vite', 'Playwright'],
         links: [
-          { label: 'Play', href: 'https://spjz.github.io/resume/' },
-          { label: 'Source', href: 'https://github.com/spjz/resume' },
+          { label: 'Play', href: 'https://spjz.uk/' },
+          { label: 'Source', href: 'https://github.com/spjz/spjz.github.io' },
         ],
         note: 'You’re looking at it.',
         playHere: true,
@@ -111,10 +111,10 @@ export const profile = {
         body: 'A first-person farming panic in the browser: carry hens to the coops and hold off foxes with a shotgun and a flamethrower. A single-file Three.js game with keyboard and touch controls.',
         tags: ['Three.js', 'WebGL', 'JavaScript'],
         links: [
-          { label: 'Play', href: 'https://spjz.github.io/henhouse-panic/' },
+          { label: 'Play', href: 'https://spjz.uk/henhouse-panic/' },
           { label: 'Source', href: 'https://github.com/spjz/henhouse-panic' },
         ],
-        embed: 'https://spjz.github.io/henhouse-panic/',
+        embed: 'https://spjz.uk/henhouse-panic/',
       },
       {
         id: 'splitter-cell',
@@ -122,10 +122,10 @@ export const profile = {
         body: 'A trippy cellular-automata art toy with live animation and graphics controls.',
         tags: ['Svelte', 'TypeScript', 'Vite'],
         links: [
-          { label: 'Play', href: 'https://spjz.github.io/splitter-cell/' },
+          { label: 'Play', href: 'https://spjz.uk/splitter-cell/' },
           { label: 'Source', href: 'https://github.com/spjz/splitter-cell' },
         ],
-        embed: 'https://spjz.github.io/splitter-cell/',
+        embed: 'https://spjz.uk/splitter-cell/',
       },
     ],
     /** Off-the-clock profiles, shown under the personal projects. @type {Link[]} */

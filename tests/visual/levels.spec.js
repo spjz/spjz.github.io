@@ -80,7 +80,7 @@ test('clicking the dragon counts explosions in the hero prompt', async ({ page }
 
 test('"Play here" loads the game only on demand, in a dialog, and pauses the dragon', async ({ page }) => {
   let requests = 0;
-  await page.route('https://spjz.github.io/**', (r) => {
+  await page.route('https://spjz.uk/**', (r) => {
     requests++;
     return r.fulfill({ contentType: 'text/html', body: '<h1>game</h1>' });
   });
@@ -92,7 +92,7 @@ test('"Play here" loads the game only on demand, in a dialog, and pauses the dra
   await page.getByRole('button', { name: '▶ Play here' }).first().click();
   const dialog = page.getByRole('dialog');
   await expect(dialog).toBeVisible();
-  await expect(dialog.locator('iframe')).toHaveAttribute('src', 'https://spjz.github.io/henhouse-panic/');
+  await expect(dialog.locator('iframe')).toHaveAttribute('src', 'https://spjz.uk/henhouse-panic/');
   await expect.poll(() => requests).toBeGreaterThan(0);
   expect(await page.evaluate(() => window.__voxel.getState().paused)).toBe(true);
 

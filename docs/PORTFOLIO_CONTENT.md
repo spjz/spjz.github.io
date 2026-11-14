@@ -84,8 +84,8 @@ There are two groups, each a responsive card grid. A card has a title, a 1–2 s
 | Title | Copy | Chips | Links |
 |---|---|---|---|
 | **Voxel dragon** | The scene behind this page: a pixel-art sprite turned into thousands of animated voxels that react to your cursor, scrolling and clicks, driven by a composable effects engine. | React, Three.js, React Three Fiber, Vite, Playwright | *You're looking at it* |
-| **Henhouse Panic** | A first-person farming panic in the browser: carry hens to the coops and hold off foxes with a shotgun and a flamethrower. A single-file Three.js game with keyboard and touch controls. | Three.js, WebGL, JavaScript | [Play](https://spjz.github.io/henhouse-panic/) · [Source](https://github.com/spjz/henhouse-panic) |
-| **Splitter Cell** | A trippy cellular-automata art toy with live animation and graphics controls. | Svelte, TypeScript, Vite | [Play](https://spjz.github.io/splitter-cell/) · [Source](https://github.com/spjz/splitter-cell) |
+| **Henhouse Panic** | A first-person farming panic in the browser: carry hens to the coops and hold off foxes with a shotgun and a flamethrower. A single-file Three.js game with keyboard and touch controls. | Three.js, WebGL, JavaScript | [Play](https://spjz.uk/henhouse-panic/) · [Source](https://github.com/spjz/henhouse-panic) |
+| **Splitter Cell** | A trippy cellular-automata art toy with live animation and graphics controls. | Svelte, TypeScript, Vite | [Play](https://spjz.uk/splitter-cell/) · [Source](https://github.com/spjz/splitter-cell) |
 
 **Left out:** the older public repos from 2015–2019 (client sites, dotfiles, PalindromicTime) and the 2024 interview-task repos. The professional cards and the three personal projects make a stronger set.
 

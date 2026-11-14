@@ -123,7 +123,7 @@ const Sink = defineEffect({
 
 ```sh
 npm test               # Vitest: engine, PoC parity, diffing, envelopes, look angles, portfolio content, section helpers (67 tests)
-npm run test:visual    # Playwright (one worker; WebGL): presets, palette, cursor tracking, click-to-explode, portfolio page, section snap scrolling, level experiences, the production build under /resume/ (record with -- --update-snapshots)
+npm run test:visual    # Playwright (one worker; WebGL): presets, palette, cursor tracking, click-to-explode, portfolio page, section snap scrolling, level experiences, the production build at the site root (record with -- --update-snapshots)
 npm run typecheck      # tsc --checkJs over the package
 npm run lint           # Biome
 npm run build          # production builds of both apps
@@ -132,15 +132,16 @@ npm run og             # re-render the portfolio share image (apps/portfolio-exa
 
 ## Deploy
 
-The portfolio (`apps/portfolio-example`) is published to GitHub Pages at <https://spjz.github.io/resume/> by `.github/workflows/pages.yml` on every push to `master`. The workflow runs the unit tests, builds the portfolio, checks the email address isn't in the build, and deploys `apps/portfolio-example/dist`.
+The portfolio (`apps/portfolio-example`) is published to GitHub Pages at <https://spjz.uk/> (the `spjz/spjz.github.io` user site) by `.github/workflows/pages.yml` on every push to `master`. The workflow runs the unit tests, builds the portfolio, checks the email address isn't in the build, and deploys `apps/portfolio-example/dist`.
 
 - One-off repo setting: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-- Builds use the `/resume/` base path. Set `BASE_PATH=/` when building for a custom domain at the root.
+- Builds use the `/` base path, because the site is served from the root of the custom domain. Set `BASE_PATH=/some-path/` to build for a sub-path instead.
+- Custom domain: **Settings → Pages → Custom domain: `spjz.uk`**, with HTTPS enforced. DNS is hosted at OVH (apex A/AAAA to GitHub, `www` CNAME to `spjz.github.io`).
 - To try the production build locally, exactly as Pages serves it:
 
 ```sh
 npm run build -w @dragon/portfolio-example
-npx vite preview apps/portfolio-example   # → http://localhost:4173/resume/
+npx vite preview apps/portfolio-example   # → http://localhost:4173/
 ```
 
 ## Notes

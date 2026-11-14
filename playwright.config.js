@@ -33,10 +33,10 @@ export default defineConfig({
   webServer: [
     { command: 'npx vite apps/playground --port 5180 --strictPort', url: 'http://localhost:5180', reuseExistingServer: true },
     { command: 'npx vite apps/portfolio-example --port 5182 --strictPort', url: 'http://localhost:5182', reuseExistingServer: true },
-    // The production build, served from /resume/ as on GitHub Pages (production.spec.js).
+    // The production build, served from the root as on GitHub Pages (production.spec.js).
     {
       command: 'npm run build -w @dragon/portfolio-example && npx vite preview apps/portfolio-example --port 5183 --strictPort',
-      url: 'http://localhost:5183/resume/',
+      url: 'http://localhost:5183/',
       reuseExistingServer: true,
       timeout: 120000,
     },
