@@ -228,25 +228,27 @@ export const profile = {
     { name: 'Front end', colour: '#b6e000', items: ['React', 'Vue', 'Svelte', 'Lit', 'Redux', 'Nuxt', 'Tailwind CSS', 'TypeScript', 'JavaScript', 'HTML', 'CSS/SCSS', 'Three.js'] },
     { name: 'Back end & data', colour: '#e8c25a', items: ['Node.js', 'Express', 'GraphQL', 'PHP (Laravel, Symfony, CodeIgniter, Phalcon)', 'MySQL', 'Elasticsearch', 'RabbitMQ'] },
     { name: 'Infrastructure', colour: '#3fae3f', items: ['AWS', 'Docker', 'Kubernetes', 'Google Compute Engine', 'DigitalOcean', 'OVH', 'Nginx', 'Apache', 'Linux', 'macOS'] },
+    { name: 'Ways of working', colour: '#ff5a5a', process: true, items: ['Architecture & design', 'Documentation', 'CI/CD', 'Observability (Grafana, Sentry)', 'Technical writing'] },
     // Not from the sprite palette: the party-mode cyan sets AI apart from the dragon's own colours.
+    // `wide` spans the full grid row, so five groups lay out as two pairs plus one wide panel.
     {
       name: 'AI-assisted engineering',
       colour: '#00e0ff',
+      wide: true,
       items: [
         'Claude Code',
         'Multi-agent orchestration',
         'Model & effort routing',
-        'Custom skills, hooks & workflows',
+        'Skills, hooks & workflows',
         'MCP integrations',
         'Context engineering',
-        'Agent-readable knowledge bases',
+        'Agent knowledge bases',
         'Code knowledge graphs',
-        'Agent guardrails & sandboxing',
-        'Independent AI code review',
+        'Agent guardrails',
+        'AI code review',
         'Spec-driven development',
       ],
     },
-    { name: 'Ways of working', colour: '#ff5a5a', process: true, items: ['Architecture & design', 'Documentation', 'CI/CD', 'Observability (Grafana, Sentry)', 'Technical writing'] },
   ],
 
   contact: {

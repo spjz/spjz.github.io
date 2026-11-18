@@ -282,6 +282,7 @@ footer { font-size: 0.85rem; }
 /* Level 5 · Crafting table: skills as pixel blocks in their group's colour. */
 .stack { border-top: 4px solid var(--block); }
 .stack h3 { color: var(--block); }
+.stack.wide { grid-column: 1 / -1; }
 .blocks { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .block {
   font-size: 0.78rem; line-height: 1.4; padding: 4px 9px; color: #12161f; font-weight: 600;

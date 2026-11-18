@@ -151,10 +151,14 @@ A timeline, newest first. Each entry has company (linked where there's a site), 
 | **Front end** | React, Vue, Svelte, Lit, Redux, Nuxt, Tailwind CSS, TypeScript, JavaScript, HTML, CSS/SCSS, Three.js |
 | **Back end & data** | Node.js, Express, GraphQL, PHP (Laravel, Symfony, CodeIgniter, Phalcon), MySQL, Elasticsearch, RabbitMQ |
 | **Infrastructure** | AWS, Docker, Kubernetes, Google Compute Engine, DigitalOcean, OVH, Nginx, Apache, Linux, macOS |
-| **AI-assisted engineering** | Claude Code, multi-agent orchestration, model & effort routing, custom skills, hooks & workflows, MCP integrations, context engineering, agent-readable knowledge bases, code knowledge graphs, agent guardrails & sandboxing, independent AI code review, spec-driven development |
 | **Ways of working** | Architecture & design, documentation, CI/CD, observability (Grafana, Sentry), technical writing |
+| **AI-assisted engineering** | Claude Code, multi-agent orchestration, model & effort routing, skills, hooks & workflows, MCP integrations, context engineering, agent knowledge bases, code knowledge graphs, agent guardrails, AI code review, spec-driven development |
 
-- **AI-assisted engineering (added 18/11/2026):** replaces "working with LLM agents" in Ways of working. It's tinted with the party-mode cyan `#00e0ff`, not a sprite colour, so it stands apart from the dragon's own palette. It uses solid blocks, not the outline-only process style.
+- **AI-assisted engineering (added 18/11/2026):**
+  - It replaces "working with LLM agents" in Ways of working.
+  - It's tinted with the party-mode cyan `#00e0ff`, not a sprite colour, so it stands apart from the dragon's own palette.
+  - It uses solid blocks, not the outline-only process style.
+  - It's last and `wide`: the panel spans the full grid row. On desktop the five groups lay out as two pairs plus one wide panel, with no lone panel on the last row.
 - **Moved to About:** the soft skills.
 - **Kept in the PDF only:** the CMSs, the editors, and marketing and SEO.
 - **Not in the CV:** Svelte and Three.js are evidenced by the GitHub projects.
