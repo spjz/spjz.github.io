@@ -93,12 +93,20 @@ There are two groups, each a responsive card grid. A card has a title, a 1–2 s
 
 A timeline, newest first. Each entry has company (linked where there's a site), location, dates, role, bullets and tech chips.
 
-**Tapp** · Hilsea · May 2025 – present · *Web developer* · [paytapp.co](https://paytapp.co)
+**Tapp** · Hilsea · May 2025 – present · *Senior developer* · [paytapp.co](https://paytapp.co)
 - Design and build Tapp Cloud's administrative and reporting interface for a payments platform.
 - Implement business logic as serverless API resources, working closely with the mobile app developers.
 - Collect telemetry for service-health dashboards, and promote standards, automation and documentation.
+- Introduced AI-assisted development to the team in 2026, then built the tooling that makes it dependable: agent skills and workflows that take a bug from ticket to verified fix, triage failing CI runs and production errors, ship branches through review to staging, and resolve merge conflicts each weekday morning.
+- Orchestrate multi-agent delivery of features that span the front end and several APIs. Planning, implementation and independent code review go to different models, inside guardrails: read-only production data, SQL safety hooks and a sandboxed shell.
+- Started an agent-readable team knowledge base and a code knowledge graph across our repositories, so people and agents work from the same source of truth.
+- Led performance optimisation, architectural reorganisation, dependency upgrades and security hardening across the front end and the APIs.
+- Set up real-time error monitoring with Sentry, and continuous integration testing with Playwright end-to-end automation on every staging deploy.
+- Migrated the entire API surface to a restructured, domain-based layout, keeping legacy clients working through HTTP proxy routing.
 
-`Node.js` `React` `Vite` `GraphQL` `Tailwind CSS` `MySQL` `Docker` `Adyen` `AWS` `Grafana`
+`Node.js` `React` `Vite` `GraphQL` `Tailwind CSS` `MySQL` `Docker` `Adyen` `AWS` `Grafana` `Sentry` `Playwright` `Claude Code` `MCP`
+
+*AI bullets added 18/11/2026. They replace the single "Introduced AI-assisted development with LLM coding agents…" bullet, and are drawn from the Claude Code setup: custom skills, scheduled conflict resolution, the production triage workflow, model routing, guardrail hooks, the team knowledge base and the code graph. Internal names are left out because the site is public.*
 
 **Keepthinking** · Southwark · Jul 2024 – May 2025 · *Web developer* · [keepthinking.it](https://keepthinking.it)
 - Full-stack development and maintenance of client sites for cultural organisations on Keepthinking's Qi collection management system.
@@ -143,8 +151,14 @@ A timeline, newest first. Each entry has company (linked where there's a site), 
 | **Front end** | React, Vue, Svelte, Lit, Redux, Nuxt, Tailwind CSS, TypeScript, JavaScript, HTML, CSS/SCSS, Three.js |
 | **Back end & data** | Node.js, Express, GraphQL, PHP (Laravel, Symfony, CodeIgniter, Phalcon), MySQL, Elasticsearch, RabbitMQ |
 | **Infrastructure** | AWS, Docker, Kubernetes, Google Compute Engine, DigitalOcean, OVH, Nginx, Apache, Linux, macOS |
-| **Ways of working** | Architecture & design, documentation, CI/CD, observability (Grafana, Sentry), technical writing, working with LLM agents |
+| **Ways of working** | Architecture & design, documentation, CI/CD, observability (Grafana, Sentry), technical writing |
+| **AI-assisted engineering** | Claude Code, multi-agent orchestration, model & effort routing, skills, hooks & workflows, MCP integrations, context engineering, agent knowledge bases, code knowledge graphs, agent guardrails, AI code review, spec-driven development |
 
+- **AI-assisted engineering (added 18/11/2026):**
+  - It replaces "working with LLM agents" in Ways of working.
+  - It's tinted with the party-mode cyan `#00e0ff`, not a sprite colour, so it stands apart from the dragon's own palette.
+  - It uses solid blocks, not the outline-only process style.
+  - It's last and `wide`: the panel spans the full grid row. On desktop the five groups lay out as two pairs plus one wide panel, with no lone panel on the last row.
 - **Moved to About:** the soft skills.
 - **Kept in the PDF only:** the CMSs, the editors, and marketing and SEO.
 - **Not in the CV:** Svelte and Three.js are evidenced by the GitHub projects.

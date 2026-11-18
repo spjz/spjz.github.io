@@ -9,7 +9,7 @@ export function Skills({ skills, level, seen, onTint }) {
         {skills.map((g, i) => (
           // biome-ignore lint/a11y/noStaticElementInteractions: hover/focus only tints the background dragon; nothing is activated
           <div
-            className={`panel stack build${g.process ? ' process' : ''}`}
+            className={`panel stack build${g.process ? ' process' : ''}${g.wide ? ' wide' : ''}`}
             key={g.name}
             style={{ '--block': g.colour, '--i': i }}
             onPointerEnter={() => onTint?.(g.colour)}
